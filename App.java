@@ -81,7 +81,7 @@ public class App {
         departamentos.add(new Departamento("Compras", 6000));
 
         usuarios.add(new Administrador("admin01", "Carlos Lacerda"));
-        usuarios.add(new Funcionario("func01", "João Silva", departamentos.get(0)));
+        usuarios.add(new Funcionario("func01", "Pedro Cardozo", departamentos.get(0)));
         usuarios.add(new Funcionario("func02", "Maria Souza", departamentos.get(1)));
 
         usuarioAtual = null;
