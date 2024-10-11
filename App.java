@@ -13,6 +13,7 @@ public class App {
 
     private static List<Usuario> usuarios = new ArrayList<>();
     private static List<Departamento> departamentos = new ArrayList<>();
+    private static List<Pedido> pedidos = new ArrayList<>();
     private static Usuario usuarioAtual;
 
     public static void main(String[] args) {
