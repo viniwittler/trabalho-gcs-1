@@ -5,6 +5,8 @@ import java.util.Scanner;
 import dados.Administrador;
 import dados.Departamento;
 import dados.Funcionario;
+import dados.Item;
+import dados.Pedido;
 import dados.Usuario;
 
 public class App {
@@ -49,5 +51,37 @@ public class App {
         usuarios.add(new Funcionario("func02", "Maria Souza", departamentos.get(1)));
 
         usuarioAtual = null;
+    }
+
+    private static void registrarPedido(Funcionario solicitante) {
+        System.out.println("\n# [Registrar Novo Pedido] #");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Data do pedido (dd/MM/yyyy): ");
+        String dataPedido = scanner.nextLine();
+
+        Pedido pedido = new Pedido(solicitante, dataPedido);
+        System.out.print("Quantos itens deseja adicionar? ");
+        int numItens = scanner.nextInt();
+        scanner.nextLine();
+
+        for (int i = 0; i < numItens; i++) {
+            System.out.print("Descrição do item: ");
+            String descricao = scanner.nextLine();
+            System.out.print("Valor unitário: ");
+            double valorUnitario = scanner.nextDouble();
+            System.out.print("Quantidade: ");
+            int quantidade = scanner.nextInt();
+            scanner.nextLine();
+
+            Item item = new Item(descricao, valorUnitario, quantidade);
+            pedido.adicionarItem(item);
+        }
+
+        if (pedido.getValorTotal() <= solicitante.getDepartamento().getValorMaximoPedido()) {
+            pedidos.add(pedido);
+            System.out.println("\nPedido registrado com sucesso.");
+        } else {
+            System.out.println("Valor total excede o limite do departamento.");
+        }
     }
 }
